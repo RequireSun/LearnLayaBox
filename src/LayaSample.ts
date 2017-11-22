@@ -19,11 +19,13 @@ class GameMain {
     private sp: Sprite;
 
     constructor() {
+        // 平滑矢量图棱角, 超耗性能, 没事别开
+        // Laya.Config.isAntialias = true;
         //创建舞台，默认背景色是黑色的
         // 重中之重, 不要丢
-        // Laya.init(800, 480);
+        Laya.init(800, 480);
         // 这句会开启 WebGL 模式
-        Laya.init(800, 480, WebGL);
+        // Laya.init(800, 480, WebGL);
         Laya.stage.bgColor = '#333';
         /**
          * 文字第一课
@@ -70,6 +72,7 @@ class GameMain {
         // this.createImage(20, 50);
         // this.createFilterRed();
         // this.createFilterGray();
+
         /**
          * 图片第五课
          * 发光 / 阴影 / 模糊 (记得在 Laya.init 里传入参数开启 WebGL)
@@ -78,12 +81,29 @@ class GameMain {
         // this.createFilterGlow();
         // this.createFilterShadow();
         // this.createFilterBlur();
+
         /**
          * 第六课绘图
          */
-        this.drawLine();
-        this.drawLines();
-        this.drawCurves();
+        // this.drawLine();
+        // this.drawLines();
+        // this.drawCurves();
+
+        /**
+         * 第七课绘制多边形
+         */
+        // this.drawPolygon();
+        // this.drawTriangle();
+        // this.drawStar();
+
+        /**
+         * 第八课其他图形
+         */
+        this.drawCircle();
+        this.drawPie();
+        this.drawRect();
+        this.drawPath();
+        this.drawPath2();
     }
     /**
      * 图片第一课
@@ -102,7 +122,7 @@ class GameMain {
     // private graphicsImage(): void { 
     //     this.img = new Laya.Sprite();
     //     Laya.stage.addChild(this.img);
-
+    //
     //     this.switchImage();
     //     this.img.on(Laya.Event.CLICK, this, this.switchImage);
     //     this.img.pos(100, 50);
@@ -213,36 +233,127 @@ class GameMain {
     //     //添加滤镜效果
     //     img.filters = [blurFilter];
     // }
-    /**
-     * 第六课绘图
-     * 画直线
-     */
-    private drawLine(): void {
-        this.sp = new Sprite();
-        Laya.stage.addChild(this.sp);
-        this.sp.graphics.drawLine(10, 20, 100, 250, '#f00', 3);
-    }
+    // /**
+    //  * 第六课绘图
+    //  * 画直线
+    //  */
+    // private drawLine(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     this.sp.graphics.drawLine(10, 20, 100, 250, '#f00', 8);
+    // }
+    // /**
+    //  * 第六课绘图
+    //  * 画折线
+    //  */
+    // private drawLines(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     // 这里跟直接画线有些许不同
+    //     // 前两个参数是起始位置的偏移值, 后面画的点都是根据前两个值的偏移来的, 数组的前两个值才是真正的起点
+    //     this.sp.graphics.drawLines(10, 20, [0, 40, 20, 40, 80, 100, 200, 0], '#0f0', 2);
+    // }
+    // /**
+    //  * 第六课绘图
+    //  * 画曲线
+    //  */
+    // private drawCurves(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     // laya 里面的贝塞尔曲线都是二次的, 不要以为有多高级
+    //     this.sp.graphics.drawCurves(10, 40, [0, 0, 19, -100, 39, 0, 59, 100, 79, 0], '#f00', 3);
+    // }
+
+    // /**
+    //  * 第七课绘制多边形
+    //  * 画三角形
+    //  */
+    // private drawTriangle(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     this.sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100], '#ff0');
+    // }
+    // /**
+    //  * 第七课绘制多边形
+    //  * 画多边形
+    //  */
+    // private drawPolygon(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     // 根据前三个点决定从何处开始着色
+    //     this.sp.graphics.drawPoly(200, 28, [0, 100, 50, 0, 100, 100, 0, 0, 25, 150], '#00f');
+    // }
+    // /**
+    //  * 第七课绘制多边形
+    //  * 画五角星
+    //  */
+    // private drawStar(): void {
+    //     var canvas: Sprite = new Sprite();
+    //     Laya.stage.addChild(canvas);
+
+    //     var path: Array<number> = [];
+    //     // 记得在点后面标注注释, 要不然迟早会忘掉的
+    //     path.push(0, -130);
+    //     path.push(33, -33);
+    //     path.push(137, -30);
+    //     path.push(55, 32);
+    //     path.push(85, 130);
+    //     path.push(0, 73);
+    //     path.push(-85, 130);
+    //     path.push(-55, 32);
+    //     path.push(-137, -30);
+    //     path.push(-33, -33);
+
+    //     canvas.graphics.drawPoly(Laya.stage.width / 2, Laya.stage.height / 2, path, '#ff7f50');
     // }
     /**
-     * 第六课绘图
-     * 画折线
+     * 第八课其他图形
+     * 画圆
      */
-    private drawLines(): void {
+    private drawCircle(): void {
         this.sp = new Sprite();
         Laya.stage.addChild(this.sp);
-        // 这里跟直接画线有些许不同
-        // 前两个参数是起始位置的偏移值, 后面画的点都是根据前两个值的偏移来的, 数组的前两个值才是真正的起点
-        this.sp.graphics.drawLines(10, 20, [0, 40, 20, 40, 80, 100, 200, 0], '#0f0', 2);
+        this.sp.graphics.drawCircle(0, 0, 50, '#f00');
     }
-    /**
-     * 第六课绘图
-     * 画曲线
-     */
-    private drawCurves(): void {
+    private drawPie(): void {
         this.sp = new Sprite();
         Laya.stage.addChild(this.sp);
-        // laya 里面的贝塞尔曲线都是二次的, 不要以为有多高级
-        this.sp.graphics.drawCurves(10, 40, [0, 0, 19, -100, 39, 0, 59, 100, 79, 0], '#f00', 3);
+        this.sp.graphics.drawPie(100, 100, 50, 20, 120, '#0f0');
+    }
+    private drawRect(): void {
+        this.sp = new Sprite();
+        Laya.stage.addChild(this.sp);
+        this.sp.graphics.drawRect(20, 20, 100, 50, '#ff0');
+    }
+    private drawPath(): void {
+        this.sp = new Sprite();
+        Laya.stage.addChild(this.sp);
+
+        var path: Array<Array<any>> = [
+            ['moveTo', 0, 0,],
+            ['lineTo', 100, 0,],
+            ['lineTo', 100, 50,],
+            ['lineTo', 0, 50,],
+            ['lineTo', 0, 0,],
+            ['closePath',],
+        ];
+
+        this.sp.graphics.drawPath(20, 20, path, { fillStyle: '#f00', });
+    }
+    private drawPath2(): void {
+        this.sp = new Sprite();
+        Laya.stage.addChild(this.sp);
+
+        var path: Array<Array<any>> = [
+            ['moveTo', -10, 0],           // 画笔的起始点
+            ['lineTo', 170, 0],         // 这个直线其实可以省略的, 当 arc 的起点连不上之前的终点的时候, 会自动连线连接起来
+            ['arcTo', 200, 0, 200, 30, 20],     // p1（500,0）为夹角B，（500,30）为端点p2
+            ['arcTo', 200, 180, 170, 180, 20],  // p1（500,300）为夹角C，（470,300）为端点p2
+            ['arcTo', 0, 180, 0, 140, 20],      // p1(0,300)为夹角D，（0,270）为端点p2
+            ['arcTo', 0, 0, 30, 0, 20],         // p1(0,0)为夹角A，（30,0）为端点p2
+        ];
+
+        this.sp.graphics.drawPath(100, 100, path, { fillStyle: '#0ff', }, { strokeStyle: '#fff', lineWidth: 10, });
     }
 }
 
