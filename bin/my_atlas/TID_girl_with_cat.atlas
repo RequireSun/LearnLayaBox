@@ -1,0 +1,155 @@
+{
+    "frames": {
+        "TID_girl_with_cat_1.png": {
+            "frame": {
+                "h": 213,
+                "idx": 0,
+                "w": 113,
+                "x": 0,
+                "y": 0
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 213,
+                "w": 113
+            },
+            "spriteSourceSize": {
+                "h": 213,
+                "w": 113,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        },
+        "TID_girl_with_cat_2.png": {
+            "frame": {
+                "h": 197,
+                "idx": 0,
+                "w": 111,
+                "x": 107,
+                "y": 214
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 197,
+                "w": 111
+            },
+            "spriteSourceSize": {
+                "h": 197,
+                "w": 111,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        },
+        "TID_girl_with_cat_3.png": {
+            "frame": {
+                "h": 176,
+                "idx": 0,
+                "w": 115,
+                "x": 331,
+                "y": 177
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 176,
+                "w": 115
+            },
+            "spriteSourceSize": {
+                "h": 176,
+                "w": 115,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        },
+        "TID_girl_with_cat_4.png": {
+            "frame": {
+                "h": 205,
+                "idx": 0,
+                "w": 106,
+                "x": 114,
+                "y": 0
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 205,
+                "w": 106
+            },
+            "spriteSourceSize": {
+                "h": 205,
+                "w": 106,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        },
+        "TID_girl_with_cat_5.png": {
+            "frame": {
+                "h": 213,
+                "idx": 0,
+                "w": 106,
+                "x": 0,
+                "y": 214
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 213,
+                "w": 106
+            },
+            "spriteSourceSize": {
+                "h": 213,
+                "w": 106,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        },
+        "TID_girl_with_cat_6.png": {
+            "frame": {
+                "h": 176,
+                "idx": 0,
+                "w": 116,
+                "x": 221,
+                "y": 0
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 176,
+                "w": 116
+            },
+            "spriteSourceSize": {
+                "h": 176,
+                "w": 116,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        },
+        "TID_girl_with_cat_7.png": {
+            "frame": {
+                "h": 195,
+                "idx": 0,
+                "w": 111,
+                "x": 219,
+                "y": 206
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 195,
+                "w": 111
+            },
+            "spriteSourceSize": {
+                "h": 195,
+                "w": 111,
+                "x": 0,
+                "y": 0
+            },
+            "trimmed": false
+        }
+    },
+    "meta": {
+        "image": "TID_girl_with_cat.png",
+        "prefix": "TID_girl_with_cat/"
+    }
+}

@@ -12,6 +12,7 @@ class GameMain {
     private logo1: string = "logo/logo_layabox.png";
     private logo2: string = "logo/logo_tencent.png";
     private logoCompensator: string = "logo/Icon_attach_Muzzle_Compensator_Large.png";
+    private atlasMy: string = 'my_atlas/TID_girl_with_cat.atlas';
     private flag: boolean = false;
     private img: Laya.Sprite;
     private cMask: Laya.Sprite;
@@ -99,11 +100,16 @@ class GameMain {
         /**
          * 第八课其他图形
          */
-        this.drawCircle();
-        this.drawPie();
-        this.drawRect();
-        this.drawPath();
-        this.drawPath2();
+        // this.drawCircle();
+        // this.drawPie();
+        // this.drawRect();
+        // this.drawPath();
+        // this.drawPath2();
+
+        /**
+         * 第九课图集
+         */
+        Laya.loader.load(this.atlasMy, Laya.Handler.create(this, this.onLoaded));
     }
     /**
      * 图片第一课
@@ -303,57 +309,80 @@ class GameMain {
     //     path.push(-55, 32);
     //     path.push(-137, -30);
     //     path.push(-33, -33);
-
+    //
     //     canvas.graphics.drawPoly(Laya.stage.width / 2, Laya.stage.height / 2, path, '#ff7f50');
     // }
-    /**
-     * 第八课其他图形
-     * 画圆
-     */
-    private drawCircle(): void {
-        this.sp = new Sprite();
-        Laya.stage.addChild(this.sp);
-        this.sp.graphics.drawCircle(0, 0, 50, '#f00');
-    }
-    private drawPie(): void {
-        this.sp = new Sprite();
-        Laya.stage.addChild(this.sp);
-        this.sp.graphics.drawPie(100, 100, 50, 20, 120, '#0f0');
-    }
-    private drawRect(): void {
-        this.sp = new Sprite();
-        Laya.stage.addChild(this.sp);
-        this.sp.graphics.drawRect(20, 20, 100, 50, '#ff0');
-    }
-    private drawPath(): void {
-        this.sp = new Sprite();
-        Laya.stage.addChild(this.sp);
 
-        var path: Array<Array<any>> = [
-            ['moveTo', 0, 0,],
-            ['lineTo', 100, 0,],
-            ['lineTo', 100, 50,],
-            ['lineTo', 0, 50,],
-            ['lineTo', 0, 0,],
-            ['closePath',],
-        ];
+    // /**
+    //  * 第八课其他图形
+    //  * 画圆
+    //  */
+    // private drawCircle(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     this.sp.graphics.drawCircle(0, 0, 50, '#f00');
+    // }
+    // /**
+    //  * 第八课其他图形
+    //  * 画扇型
+    //  */
+    // private drawPie(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     this.sp.graphics.drawPie(100, 100, 50, 20, 120, '#0f0');
+    // }
+    // /**
+    //  * 第八课其他图形
+    //  * 画矩形
+    //  */
+    // private drawRect(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
+    //     this.sp.graphics.drawRect(20, 20, 100, 50, '#ff0');
+    // }
+    // /**
+    //  * 第八课其他图形
+    //  * 路径绘制
+    //  */
+    // private drawPath(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
 
-        this.sp.graphics.drawPath(20, 20, path, { fillStyle: '#f00', });
-    }
-    private drawPath2(): void {
-        this.sp = new Sprite();
-        Laya.stage.addChild(this.sp);
+    //     var path: Array<Array<any>> = [
+    //         ['moveTo', 0, 0,],
+    //         ['lineTo', 100, 0,],
+    //         ['lineTo', 100, 50,],
+    //         ['lineTo', 0, 50,],
+    //         ['lineTo', 0, 0,],
+    //         ['closePath',],
+    //     ];
 
-        var path: Array<Array<any>> = [
-            ['moveTo', -10, 0],           // 画笔的起始点
-            ['lineTo', 170, 0],         // 这个直线其实可以省略的, 当 arc 的起点连不上之前的终点的时候, 会自动连线连接起来
-            ['arcTo', 200, 0, 200, 30, 20],     // p1（500,0）为夹角B，（500,30）为端点p2
-            ['arcTo', 200, 180, 170, 180, 20],  // p1（500,300）为夹角C，（470,300）为端点p2
-            ['arcTo', 0, 180, 0, 140, 20],      // p1(0,300)为夹角D，（0,270）为端点p2
-            ['arcTo', 0, 0, 30, 0, 20],         // p1(0,0)为夹角A，（30,0）为端点p2
-        ];
+    //     this.sp.graphics.drawPath(20, 20, path, { fillStyle: '#f00', });
+    // }
+    // /**
+    //  * 第八课其他图形
+    //  * 画星星
+    //  */
+    // private drawPath2(): void {
+    //     this.sp = new Sprite();
+    //     Laya.stage.addChild(this.sp);
 
-        this.sp.graphics.drawPath(100, 100, path, { fillStyle: '#0ff', }, { strokeStyle: '#fff', lineWidth: 10, });
+    //     var path: Array<Array<any>> = [
+    //         ['moveTo', -10, 0],           // 画笔的起始点
+    //         ['lineTo', 170, 0],         // 这个直线其实可以省略的, 当 arc 的起点连不上之前的终点的时候, 会自动连线连接起来
+    //         ['arcTo', 200, 0, 200, 30, 20],     // p1（500,0）为夹角B，（500,30）为端点p2
+    //         ['arcTo', 200, 180, 170, 180, 20],  // p1（500,300）为夹角C，（470,300）为端点p2
+    //         ['arcTo', 0, 180, 0, 140, 20],      // p1(0,300)为夹角D，（0,270）为端点p2
+    //         ['arcTo', 0, 0, 30, 0, 20],         // p1(0,0)为夹角A，（30,0）为端点p2
+    //     ];
+
+    //     this.sp.graphics.drawPath(100, 100, path, { fillStyle: '#0ff', }, { strokeStyle: '#fff', lineWidth: 10, });
+    // }
+
+    private onLoaded(): void {
+        var img: Laya.Image = new Laya.Image();
+        img.skin = 'TID_girl_with_cat/TID_girl_with_cat_1.png';
+        Laya.stage.addChild(img);
     }
 }
 
